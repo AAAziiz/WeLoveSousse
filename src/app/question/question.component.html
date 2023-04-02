@@ -1,0 +1,7 @@
+<form #questionForm="ngForm" (ngSubmit)="submitQuestion(questionForm.value)">
+    <label for="w3review">Enter your question:</label>
+    <br>
+    <textarea id="w3review" rows="4"[cols]="180"  name="question" [(ngModel)]="question" required></textarea> <br>
+    <button type="submit" [disabled]="questionForm.invalid">Submit</button>
+  </form>
+  

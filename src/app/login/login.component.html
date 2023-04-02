@@ -1,0 +1,32 @@
+<div class="container">
+  <h2 style="color: red;">Welcome !! Login here </h2><br>
+    <form #loginform="ngForm" (ngSubmit)="loginUser()">
+      {{loginform.form.valid}}
+      <small class="text-danger">{{msg}}</small>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email"  [(ngModel)]="user.emailId" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        #email ="ngModel"
+        [class.is-invalid]="email.invalid && email.touched"
+        >
+       <!-- <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required field</small> -->
+       <div *ngIf="email.errors &&(email.invalid && email.touched)">
+         <small class="text-danger"  *ngIf="email.errors['required']"> Email is required field</small>
+         <small class="text-danger"  *ngIf="email.errors['pattern']"> Enter the valid emailId</small>
+      </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password"    [(ngModel)]="user.password"  required #password="ngModel"
+        [class.is-invalid]="password.invalid && password.touched"
+        >
+       <small class="text-danger" [class.d-none]="password.valid || password.untouched">Email Id is required field</small> 
+      </div>
+    
+      <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Login</button>
+    </form>
+    <small class="float-right btextual" [routerLink]="['/registration']" >New user ? Register here  </small>
+  </div>
+  
