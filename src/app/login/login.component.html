@@ -26,6 +26,8 @@
       </div>
     
       <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Login</button>
+           <button [disabled]="loginform.form.invalid" type="submit" class="btn btn-info">Log out</button>
+
     </form>
     <small class="float-right btextual" [routerLink]="['/registration']" >New user ? Register here  </small>
   </div>
